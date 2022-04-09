@@ -1,0 +1,311 @@
+from tkinter import *
+from tkinter import messagebox
+import pickle  #pikl - kiritilgan suzlarni baytga aylantirish. Unpickle - teskarisi
+root = Tk()
+root.geometry("500x500")
+root.title ("Войти в систему")
+
+def registration():   #Registratsiya qilish bo`limi
+    text = Label(text="Для входа в систему - зарегистрируйтесь!")
+    text.config(font=("forte",16,"bold"))
+    text.config(bg="#7561db")
+    text.config(fg="#FFFFE0")
+    text_log = Label(text="Введите ваш логин:")
+    text_log.config(font=("forte",16,"bold"))
+    text_log.config(bg="#dd17f7")
+    text_log.config(fg="#FFFFE0")
+    registr_login = Entry()
+    text_password1 = Label(text="Введите ваш парол:")
+    text_password1.config(font=("forte",16,"bold"))
+    text_password1.config(bg="#dd17f7")
+    text_password1.config(fg="#FFFFE0")
+    registr_password1 = Entry(show="*")
+    text_password2 = Label(text="подвердите ваш парол:")
+    text_password2.config(font=("forte",16,"bold"))
+    text_password2.config(bg="#dd17f7")
+    text_password2.config(fg="#FFFFE0")
+    registr_password2 = Entry(show="*")
+    button_registr = Button(text="Зарегистрироваться!", command=lambda: save()) #Registr tugmasi bosilganda save funksiyasi iwga tuwadi
+    button_registr.config(font=("forte",16,"bold"))
+    button_registr.config(bg="#7561db")
+    button_registr.config(fg="#FFFFE0")
+
+    text.pack()
+    text_log.pack()
+    registr_login.pack()
+    text_password1.pack()
+    registr_password1.pack()
+    text_password2.pack()
+    registr_password2.pack()
+    button_registr.pack()
+
+    def save():  #login va parolni saqlash
+        login_pass_save = {}
+        login_pass_save[registr_login.get()] = registr_password1.get()
+        f = open("login.txt", "wb")
+        pickle.dump(login_pass_save, f)
+        f.close()
+        login()
+
+
+def login():    #avtorizatsiya bo`limi
+    text_log = Label(text="Теперь вы можете войти в систему! ")
+    text_log.config(font=("forte",16,"bold"))
+    text_log.config(bg="#7561db")
+    text_log.config(fg="#FFFFE0")
+    text_enter_login = Label(text="Введите ваш логин:")
+    text_enter_login.config(font=("forte",16,"bold"))
+    text_enter_login.config(bg="#dd17f7")
+    text_enter_login.config(fg="#FFFFE0")
+    enter_login = Entry()
+    text_enter_password = Label(text="Введите ваш парол:")
+    text_enter_password.config(font=("forte",16,"bold"))
+    text_enter_password.config(bg="#dd17f7")
+    text_enter_password.config(fg="#FFFFE0")
+    enter_password = Entry(show="*")
+    button_enter = Button(text="Войти", command=lambda: log_pass())  #kirish bosilganda login va parol tekshiriladi!
+    button_enter.config(font=("forte",16,"bold"))
+    button_enter.config(bg="#7561db")
+    button_enter.config(fg="#FFFFE0")
+
+    text_log.pack()
+    text_enter_login.pack()
+    enter_login.pack()
+    text_enter_password.pack()
+    enter_password.pack()
+    button_enter.pack()
+
+    def log_pass(): #login va parolni tekshirish
+        f = open("login.txt", "rb") #login.txtni uqish  rb-bu read
+        a = pickle.load(f)
+        f.close()
+        if enter_login.get() in a:
+            if enter_password.get() ==a[enter_login.get()]: #agar parol va login tugri bulsa
+               messagebox.showinfo("Вход выполнен", "Вы успешно вошли в аккаунт")
+            else:
+                messagebox.showerror("Ошибка", "Вы ввели не правилный логин или пароль")
+        else:
+            messagebox.showerror("Ошибка", "Вы ввели не правилный пароль")
+
+registration()
+
+
+root.mainloop()
+
+
+def click():
+  global count
+def showtelnumber():
+  return messagebox.showinfo('ULTRA GAMING PC', '99-4044443')
+def korzinka():
+    return messagebox.showinfo('ULTRA GAMING PC', 'Korzinkaga saqlandi! Mening korzinkamdan topishingiz mumkin!')
+def manzil():
+  return messagebox.showinfo('ULTRA GAMING PC', 'Toshkent shahar "Malika" bozori 37a')
+def comment():
+    return messagebox.showinfo('ULTRA GAMING PC', 'Kommentingizni yozing >') and Entry()
+def close():
+    return messagebox.showinfo('ULTRA GAMING PC', 'Magazin yopildi! Tashrifingiz uchun rahmat') and sys.exit()
+def nxt():
+    return messagebox.showinfo('ULTRA GAMING PC', 'Marhamat! Keyngi sborka!')
+def sotib_olish():
+    return messagebox.showinfo('ULTRA GAMING PC', 'Click orqali to`lovni amalga oshiring!')
+def buyurtma():
+    return messagebox.showinfo('ULTRA GAMING PC', 'Yetkazib berish uchun manzilingizni qoldiring!')
+
+window = Tk()
+window.title('ULTRA GAMING PC #77')
+button = Button(window, text_="Tel raqamini ko`rsatish")
+button.config(command=showtelnumber)  #kopka funksiyasi
+button.config(font=("forte",16,"bold"))
+button.config(bg="#DB7093")
+button.config(fg="#FFFFE0")
+button.config(activebackground="#FEEDA9")
+button.config(activebackground="#4BEED6")
+
+button1 = Button(text_="Korzinkaga qo`shish")
+button1.config(command=korzinka)  #kopka funksiyasi
+button1.config(font=("forte",16,"bold"))
+button1.config(bg="#DB7093")
+button1.config(fg="#FFFFE0")
+button1.config(activebackground="#FEEDA9")
+button1.config(activebackground="#4BEED6")
+
+button2 = Button(text_="Manzilni ko`rsatish")
+button2.config(command=manzil)  #kopka funksiyasi
+button2.config(font=("forte",16,"bold"))
+button2.config(bg="#DB7093")
+button2.config(fg="#FFFFE0")
+button2.config(activebackground="#FEEDA9")
+button2.config(activebackground="#4BEED6")
+
+button3 = Button(text_="kommentariya qoldirish")
+button3.config(command=comment)  #kopka funksiyasi
+button3_comment = Label
+button3_comment = Entry()
+button3_comment.config(text_="kommentariyani junatish")
+button3_comment.config(font=("forte",16,"bold"))
+button3_comment.config(bg="#DB7093")
+button3_comment.config(fg="#FFFFE0")
+button3.config(font=("forte",16,"bold"))
+button3.config(bg="#DB7093")
+button3.config(fg="#FFFFE0")
+button3.config(activebackground="#FEEDA9")
+button3.config(activebackground="#4BEED6")
+
+button10 = Button(text_="Sotib olish")
+button10.config(command=sotib_olish)  #kopka funksiyasi
+button10.config(font=("forte",16,"bold"))
+button10.config(bg="#DB7093")
+button10.config(fg="#FFFFE0")
+button10.config(activebackground="#FEEDA9")
+button10.config(activebackground="#4BEED6")
+
+button11 = Button(text_="Buyurtma qilish")
+button11.config(command=buyurtma)  #kopka funksiyasi
+button11.config(font=("forte",16,"bold"))
+button11.config(bg="#DB7093")
+button11.config(fg="#FFFFE0")
+button11.config(activebackground="#FEEDA9")
+button11.config(activebackground="#4BEED6")
+
+button3_nxt = Button(text_="Keyingi Kompyuterga o`tish")
+button3_nxt.config(command=nxt) #kopka funksiyasi
+button3_nxt.config(font=("forte",16,"bold"))
+button3_nxt.config(bg="#DB7093")
+button3_nxt.config(fg="#FFFFE0")
+button3_nxt.config(activebackground="#FEEDA9")
+button3_nxt.config(activebackground="#4BEED6")
+
+button4 = Button(text_="Magazindan chiqish")
+button4.config(command=close)  #kopka funksiyasi
+button4.config(font=("forte",16,"bold"))
+button4.config(bg="#DB7093")
+button4.config(fg="#FFFFE0")
+button4.config(activebackground="#FEEDA9")
+button4.config(activebackground="#4BEED6")
+
+#Fon
+image = PhotoImage(file=r"D:/foto/test1.png")
+image.config(width=480)
+image.config(height=480)
+button.config(image=image) #width=300, #height=300
+button.config(compound="top")
+
+#button.config(state= DISABLED)
+
+lable1 = Label(window)
+lable1.config(font=("Monospace"))
+lable1.pack()
+button.pack()
+button1.pack()
+button2.pack()
+button3.pack()
+button3_comment.pack()
+button10.pack()
+button11.pack()
+button3_nxt.pack()
+button4.pack()
+
+
+root.mainloop()
+
+window.mainloop()
+
+window = Tk()
+window.title('ULTRA GAMING PC #78')
+button = Button(window, text_="Tel raqamini ko`rsatish")
+button.config(command=showtelnumber)  #kopka funksiyasi
+button.config(font=("forte",16,"bold"))
+button.config(bg="#DB7093")
+button.config(fg="#FFFFE0")
+button.config(activebackground="#FEEDA9")
+button.config(activebackground="#4BEED6")
+
+button1 = Button(text_="Korzinkaga qo`shish")
+button1.config(command=korzinka)  #kopka funksiyasi
+button1.config(font=("forte",16,"bold"))
+button1.config(bg="#DB7093")
+button1.config(fg="#FFFFE0")
+button1.config(activebackground="#FEEDA9")
+button1.config(activebackground="#4BEED6")
+
+button2 = Button(text_="Manzilni ko`rsatish")
+button2.config(command=manzil)  #kopka funksiyasi
+button2.config(font=("forte",16,"bold"))
+button2.config(bg="#DB7093")
+button2.config(fg="#FFFFE0")
+button2.config(activebackground="#FEEDA9")
+button2.config(activebackground="#4BEED6")
+
+button3 = Button(text_="kommentariya qoldirish")
+button3.config(command=comment)  #kopka funksiyasi
+button3_comment = Label
+button3_comment = Entry()
+button3_comment.config(text_="kommentariyani junatish")
+button3_comment.config(font=("forte",16,"bold"))
+button3_comment.config(bg="#DB7093")
+button3_comment.config(fg="#FFFFE0")
+button3.config(font=("forte",16,"bold"))
+button3.config(bg="#DB7093")
+button3.config(fg="#FFFFE0")
+button3.config(activebackground="#FEEDA9")
+button3.config(activebackground="#4BEED6")
+
+button10 = Button(text_="Sotib olish")
+button10.config(command=sotib_olish)  #kopka funksiyasi
+button10.config(font=("forte",16,"bold"))
+button10.config(bg="#DB7093")
+button10.config(fg="#FFFFE0")
+button10.config(activebackground="#FEEDA9")
+button10.config(activebackground="#4BEED6")
+
+button11 = Button(text_="Buyurtma qilish")
+button11.config(command=buyurtma)  #kopka funksiyasi
+button11.config(font=("forte",16,"bold"))
+button11.config(bg="#DB7093")
+button11.config(fg="#FFFFE0")
+button11.config(activebackground="#FEEDA9")
+button11.config(activebackground="#4BEED6")
+
+button3_nxt = Button(text_="Keyingi Kompyuterga o`tish")
+button3_nxt.config(command=nxt) #kopka funksiyasi
+button3_nxt.config(font=("forte",16,"bold"))
+button3_nxt.config(bg="#DB7093")
+button3_nxt.config(fg="#FFFFE0")
+button3_nxt.config(activebackground="#FEEDA9")
+button3_nxt.config(activebackground="#4BEED6")
+
+button4 = Button(text_="Magazindan chiqish")
+button4.config(command=close)  #kopka funksiyasi
+button4.config(font=("forte",16,"bold"))
+button4.config(bg="#DB7093")
+button4.config(fg="#FFFFE0")
+button4.config(activebackground="#FEEDA9")
+button4.config(activebackground="#4BEED6")
+
+#Fon
+image = PhotoImage(file=r"D:/foto/test2.png")
+image.config(width=480)
+image.config(height=480)
+button.config(image=image) #width=300, #height=300
+button.config(compound="top")
+
+#button.config(state= DISABLED)
+
+lable = Label(window)
+lable.config(font=("Monospace"))
+lable.pack()
+button.pack()
+button1.pack()
+button2.pack()
+button3.pack()
+button3_comment.pack()
+button10.pack()
+button11.pack()
+button3_nxt.pack()
+button4.pack()
+
+
+root.mainloop()
+
+window.mainloop()
