@@ -185,7 +185,7 @@ button4.config(activebackground="#FEEDA9")
 button4.config(activebackground="#4BEED6")
 
 #Fon
-image = PhotoImage(file=r"D:/foto/test1.png")
+image = PhotoImage(file=r"test1.png")
 image.config(width=480)
 image.config(height=480)
 button.config(image=image) #width=300, #height=300
@@ -284,7 +284,7 @@ button4.config(activebackground="#FEEDA9")
 button4.config(activebackground="#4BEED6")
 
 #Fon
-image = PhotoImage(file=r"D:/foto/test2.png")
+image = PhotoImage(file=r"test2.png")
 image.config(width=480)
 image.config(height=480)
 button.config(image=image) #width=300, #height=300
